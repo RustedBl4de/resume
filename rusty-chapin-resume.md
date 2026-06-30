@@ -25,52 +25,30 @@ Engineering Leadership | Platform Engineering | Site Reliability Engineering (SR
 
 Lead the Persistence (PER) team within Remitly's Developer Platform organization — a focused team of 3 engineers in Seattle owning a disproportionately large surface area: the Aurora (PostgreSQL and MySQL), DynamoDB, ElastiCache, S3, and EFS layer that underpins transaction processing, compliance, and developer self-service for a global remittance platform. Accountable for the architecture, cost envelope, and regulatory posture of that layer company-wide.
 
-**Platform Engineering — Forge Resource Controller Family**
+**Platform Engineering — Internal Developer Platform**
 
-- Own the persistence Forge Resource Controller (RC) family — a unified, declarative Internal Developer Platform pattern exposing Aurora PostgreSQL, Aurora MySQL, DynamoDB, and ElastiCache as self-service primitives for every engineering team in the company.
-- Shipped Aurora PostgreSQL as a Generally Available offering on Forge, including declarative cluster management, parameter groups, replication, and IAM authentication. Established architectural policy prohibiting DNS aliasing for RDS — a deliberate tradeoff chosen to protect IAM authentication and Blue-Green deployment pathways over short-term routing convenience.
-- Drove DynamoDB Resource Controller adoption from 0 to 50% of production tables, on track to 99%, eliminating ad-hoc DynamoDB provisioning across the organization.
-- Launched Forge Postgres User Management GA, removing manual DB-user provisioning toil for every engineering team and integrating GRANT sequencing with Alembic schema migrations.
-- Extended cross-region capability by delivering Aurora MySQL and PostgreSQL Global Databases for low-latency multi-region reads and regional failover.
-- Reduced persistence operational spend by **$1M+ over two years** through platform consolidation and reservation strategy.
+- Own the persistence Forge Resource Controller (RC) family — a unified, declarative IDP pattern exposing Aurora PostgreSQL, Aurora MySQL, DynamoDB, and ElastiCache as self-service primitives for every engineering team in the company.
+- Shipped Aurora PostgreSQL and Postgres User Management to GA, removing manual cluster and DB-user provisioning toil org-wide and integrating GRANT sequencing with Alembic schema migrations.
+- Drove DynamoDB Resource Controller adoption from 0 to 50% of production tables (on track to 99%); set architectural policy prohibiting DNS aliasing for RDS — a deliberate tradeoff protecting IAM authentication and Blue-Green deployment pathways over short-term routing convenience.
+- Extended cross-region capability with Aurora MySQL and PostgreSQL Global Databases for low-latency multi-region reads and regional failover.
 
-**Multiverse Cross-Account Data Migration Architecture**
+**Data Migration Architecture & AWS Partnership**
 
-- Authored Remitly's universal seven-stage zero-downtime data migration pattern (Replicate, Hydrate, Sync, Validate, Cutover, Soak, Terminate) for Multiverse — Remitly's multi-tenant, single-tenant-account architecture initiative.
-- Designed Change Data Capture (CDC) driven migration patterns across Aurora MySQL, Aurora PostgreSQL, DynamoDB, S3, and EFS using AWS DMS, DataSync, DynamoDB Streams with Lambda, and Transit Gateway.
-- Partnered with AWS Solutions Architects to validate pricing models and total cost of ownership at scale.
+- Authored Remitly's universal seven-stage zero-downtime data migration pattern (Replicate → Hydrate → Sync → Validate → Cutover → Soak → Terminate) for the Multiverse multi-tenant initiative, with CDC-driven patterns across Aurora, DynamoDB, S3, and EFS using AWS DMS, DataSync, DynamoDB Streams with Lambda, and Transit Gateway.
+- Secured AWS VP-level engagement producing a dedicated Specialist Solutions Architect for Multiverse and roadmap commitments on Aurora MySQL currency, DSQL active-active migration patterns, and DynamoDB Global Secondary Index improvements; organized AWS-led DynamoDB Immersion Days for the full Seattle and Kraków engineering organization.
 
-**AWS Strategic Partnership**
+**Cost, Compliance & Reliability**
 
-- Organized and ran AWS-led DynamoDB Immersion Days for the full Remitly engineering organization across Seattle (March 2026) and Kraków — covering NoSQL data modeling, advanced design patterns, DynamoDB Streams, and Global Tables; drove an org-wide skill-gap survey and distributed recordings for asynchronous learning.
-- Secured AWS VP-level engagement that produced a dedicated Specialist Solutions Architect for Multiverse and roadmap commitments on Aurora MySQL currency, DSQL active-active migration patterns, and DynamoDB Global Secondary Index improvements.
+- Reduced persistence operational spend **$1M+ over two years** through platform consolidation and a reservation strategy at 90% coverage and utilization across RDS, DynamoDB, and ElastiCache (RI, Savings Plan, and ECO recovery tracked against monthly commitments).
+- Own persistence-team evidence for FY24 SOX ITGC Control C.12 (Database Backup), 2025 Joint State Exam (JSE) money-transmitter audits, and RCUF control validation; automated User Access Reviews via rds-user-manager, shifting UAR from a quarterly SOX checkbox to a bi-weekly engineering habit.
+- Led incident response for a Large-Scale Event (DynamoDB production data loss) and the Kurator missed-records incident — restoring service, eliminating the failure modes, and hardening systems against recurrence to avoid significant customer and regulatory impact.
+- Built the Persistence Policy Service plus Grafana and CloudWatch dashboards under Remitly's Developer Intelligence initiative, surfacing resource-usage and compliance insights to product teams across production and pre-production.
 
-**Cost Optimization (FinOps)**
-
-- Authored the AWS Reservation Management Plan for RDS, DynamoDB, and ElastiCache with 90% reservation coverage and 90% utilization targets.
-- Implemented Reserved Instance, Savings Plan, and Compute Savings Plan tracking across the persistence fleet; tracked Enterprise Cost Optimization (ECO) recovery against monthly commitments.
-
-**Compliance, Audit, and Regulatory Posture**
-
-- Own persistence-team evidence for FY24 SOX ITGC Control C.12 (Database Backup), 2025 Joint State Exam (JSE) money-transmitter audits, and Risk and Compliance Universal Framework (RCUF) control validation.
-- Delivered User Access Review (UAR) automation through rds-user-manager; championed shifting UAR from a quarterly SOX checkbox to a bi-weekly engineering habit.
-
-**Developer Intelligence and Observability**
-
-- Led the Persistence team's contribution to Remitly's Developer Intelligence initiative — built the Persistence Policy Service surfacing actionable insights on database resource usage and compliance posture across all product teams.
-- Built and maintained Grafana and CloudWatch dashboards giving product teams visibility into RDS cluster performance across production and pre-production.
-
-**Incident Leadership**
-
-- Led the remediation epic for a Large-Scale Event (LSE) involving DynamoDB production data loss; partnered cross-functionally to restore service, eliminate the failure mode, and harden the resource controller against recurrence.
-- Directed the Kurator missed-records incident response — identified, fixed, audited, and re-designed the system to prevent recurrence, avoiding significant customer and regulatory impact.
-
-**Team Leadership and Organizational Development**
+**Team Leadership & Organizational Development**
 
 - Lead a 3-engineer Seattle team owning the company's persistence layer; drive engagement through weekly one-on-ones, structured career-development frameworks, and roadmap alignment.
-- Built the Persistence team operating system within the first six months: Sprint Playbook, Jira Intake Process, Code Ownership Split, Test Plan Template, and Outcomes-vs-Outputs coaching framework.
-- Authored the Persistence Team North Star Metric (TB managed), tying infrastructure growth to customer transaction growth.
-- Owned the Developer Platform organization engagement-survey readout to senior leadership (Q1 2025) with 91% participation; partnered with directors and skip-level VP on action plans.
+- Built the team operating system in the first six months (Sprint Playbook, Jira Intake Process, Code Ownership Split, Test Plan Template, Outcomes-vs-Outputs coaching) and authored the team North Star Metric (TB managed), tying infrastructure growth to customer transaction growth.
+- Owned the Developer Platform organization engagement-survey readout to senior leadership (Q1 2025, 91% participation), partnering with directors and skip-level VP on action plans.
 
 ### Vice President of Systems Engineering
 **Pyrofex | Orem, UT (Remote) | January 2023 – August 2024**
